@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edgar Ivan Navarrete Salcedo - Interactive CV</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1e293b;
+            --secondary: #3b82f6;
+            --accent: #10b981;
+            --bg-color: #f8fafc;
+            --text-main: #334155;
+            --text-light: #64748b;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary), #0f172a);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.8em;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+        }
+
+        header h2 {
+            color: #94a3b8;
+            font-weight: 400;
+            margin-top: 10px;
+            font-size: 1.4em;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+            font-size: 1em;
+        }
+
+        .contact-info span, .contact-info a {
+            color: #cbd5e1;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: -30px auto 40px auto;
+            padding: 40px;
+            background: white;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            border-radius: 12px;
+        }
+
+        h3.section-title {
+            color: var(--primary);
+            font-size: 1.8em;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 10px;
+            margin-top: 40px;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* Metrics Section */
+        .metrics-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .metric-card {
+            background: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            padding: 25px;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.2s;
+        }
+
+        .metric-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .metric-card i {
+            font-size: 2.5em;
+            color: var(--accent);
+            margin-bottom: 15px;
+        }
+
+        .metric-card h4 {
+            font-size: 2.5em;
+            color: var(--primary);
+            margin: 0;
+        }
+
+        .metric-card p {
+            margin: 10px 0 0 0;
+            color: var(--text-light);
+            font-weight: 500;
+        }
+
+        /* Transformation Diagram */
+        .transformation-wrapper {
+            background: #f8fafc;
+            padding: 30px;
+            border-radius: 12px;
+            border: 1px dashed #cbd5e1;
+            margin-bottom: 40px;
+        }
+
+        .diagram {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .step {
+            flex: 1;
+            min-width: 220px;
+            background: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            text-align: center;
+            position: relative;
+            border-top: 5px solid var(--secondary);
+        }
+
+        .step.legacy { border-top-color: #94a3b8; }
+        .step.modern { border-top-color: #3b82f6; }
+        .step.future { border-top-color: var(--accent); background: #f0fdf4; }
+
+        .step h4 {
+            margin: 0 0 15px 0;
+            font-size: 1.2em;
+            color: var(--primary);
+        }
+        
+        .step p {
+            font-size: 0.9em;
+            color: var(--text-light);
+            margin: 0;
+        }
+
+        .step ul {
+            text-align: left;
+            font-size: 0.85em;
+            padding-left: 20px;
+            margin-top: 15px;
+            color: var(--text-main);
+        }
+
+        .arrow {
+            font-size: 1.5em;
+            color: #94a3b8;
+        }
+
+        /* Technologies Grid */
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+
+        .tech-card {
+            background: white;
+            border: 1px solid #e2e8f0;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+        }
+
+        .tech-card h4 {
+            margin: 0 0 15px 0;
+            color: var(--secondary);
+            font-size: 1.1em;
+            border-bottom: 1px solid #f1f5f9;
+            padding-bottom: 8px;
+        }
+
+        .tech-card ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .tech-card ul li {
+            padding: 5px 0;
+            font-size: 0.95em;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .tech-card ul li::before {
+            content: "•";
+            color: var(--secondary);
+            font-weight: bold;
+        }
+
+        /* Experience Timeline */
+        .timeline {
+            border-left: 3px solid #e2e8f0;
+            padding-left: 30px;
+            margin-left: 15px;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 40px;
+        }
+
+        .timeline-item::before {
+            content: "";
+            position: absolute;
+            left: -39px;
+            top: 0;
+            width: 15px;
+            height: 15px;
+            background: var(--secondary);
+            border-radius: 50%;
+            border: 4px solid white;
+            box-shadow: 0 0 0 2px var(--secondary);
+        }
+        
+        .timeline-item.current::before {
+            background: var(--accent);
+            box-shadow: 0 0 0 2px var(--accent);
+        }
+
+        .timeline-date {
+            font-size: 0.9em;
+            color: var(--secondary);
+            font-weight: 600;
+            margin-bottom: 5px;
+            display: inline-block;
+        }
+
+        .timeline-title {
+            margin: 0 0 10px 0;
+            font-size: 1.3em;
+            color: var(--primary);
+        }
+
+        .timeline-company {
+            font-weight: 600;
+            color: var(--text-main);
+        }
+
+        @media (max-width: 768px) {
+            .diagram { flex-direction: column; }
+            .arrow { transform: rotate(90deg); margin: 10px 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Edgar Iván Navarrete Salcedo</h1>
+        <h2>Quality Assurance Senior Engineer & AI QA Architect</h2>
+        <div class="contact-info">
+            <span><i class="fas fa-map-marker-alt"></i> Guadalajara, Jalisco, MX</span>
+            <span><i class="fas fa-envelope"></i> edgarn34@gmail.com</span>
+            <span><i class="fas fa-phone"></i> (+52) 3312761478</span>
+            <a href="https://www.linkedin.com/in/edgar-ivan-navarrete-salcedo-30675b179" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+        </div>
+    </header>
+
+    <div class="container">
+        
+        <!-- Impact & Metrics -->
+        <h3 class="section-title"><i class="fas fa-chart-line"></i> Key Business Impacts</h3>
+        <div class="metrics-container">
+            <div class="metric-card">
+                <i class="fas fa-stopwatch"></i>
+                <h4>70%</h4>
+                <p>Increase in Time Efficiency via AI-Driven QA</p>
+            </div>
+            <div class="metric-card">
+                <i class="fas fa-tachometer-alt"></i>
+                <h4>35%</h4>
+                <p>Reduction in Regression Cycle Times</p>
+            </div>
+            <div class="metric-card">
+                <i class="fas fa-coins"></i>
+                <h4>Cost Optimized</h4>
+                <p>Via Token Caching & JSON Persistence</p>
+            </div>
+        </div>
+
+        <!-- Transformation Diagram -->
+        <h3 class="section-title"><i class="fas fa-project-diagram"></i> QA Evolution & Transformation Strategy</h3>
+        <div class="transformation-wrapper">
+            <div class="diagram">
+                <div class="step legacy">
+                    <h4>1. Legacy Manual QA</h4>
+                    <p>Traditional Execution</p>
+                    <ul>
+                        <li>Manual frontend & backend validation</li>
+                        <li>Slower release cycles</li>
+                        <li>High operational dependency</li>
+                    </ul>
+                </div>
+                
+                <i class="fas fa-arrow-right arrow"></i>
+                
+                <div class="step modern">
+                    <h4>2. Scalable Automation</h4>
+                    <p>CI/CD & Frameworks</p>
+                    <ul>
+                        <li>Salesforce & Enterprise testing</li>
+                        <li>UI/API Automation (Selenium, Postman)</li>
+                        <li>BDD (Gherkin) & Pipeline Orchestration</li>
+                    </ul>
+                </div>
+
+                <i class="fas fa-arrow-right arrow"></i>
+                
+                <div class="step future">
+                    <h4>3. AI-Agent Architecture</h4>
+                    <p>Autonomous Quality</p>
+                    <ul>
+                        <li>LLM-driven test case generation</li>
+                        <li>Multi-platform execution (Appium, WinAppDriver)</li>
+                        <li>Dynamic requirements & Jira auto-sync</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tech Stack -->
+        <h3 class="section-title"><i class="fas fa-laptop-code"></i> Core Competencies & Technologies</h3>
+        <div class="tech-grid">
+            <div class="tech-card">
+                <h4><i class="fas fa-brain"></i> AI Innovation</h4>
+                <ul>
+                    <li>Generative AI for QA</li>
+                    <li>Prompt Engineering</li>
+                    <li>Token Optimization</li>
+                    <li>Autonomous Agents (Python)</li>
+                </ul>
+            </div>
+            <div class="tech-card">
+                <h4><i class="fas fa-cloud"></i> Ecosystems</h4>
+                <ul>
+                    <li>Salesforce Platform</li>
+                    <li>CRM Testing</li>
+                    <li>Enterprise Apps</li>
+                    <li>JSON Data Modeling</li>
+                </ul>
+            </div>
+            <div class="tech-card">
+                <h4><i class="fas fa-robot"></i> UI/API Automation</h4>
+                <ul>
+                    <li>Selenium, Appium</li>
+                    <li>Postman, Rest Assured</li>
+                    <li>Python, Java</li>
+                    <li>Pytest, Behave</li>
+                </ul>
+            </div>
+            <div class="tech-card">
+                <h4><i class="fas fa-server"></i> DevOps & Strategy</h4>
+                <ul>
+                    <li>Azure DevOps, Jenkins</li>
+                    <li>BDD (Gherkin), TDD</li>
+                    <li>Agile/Scrum Leadership</li>
+                    <li>Metrics Governance</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Experience -->
+        <h3 class="section-title"><i class="fas fa-briefcase"></i> Professional Experience</h3>
+        <div class="timeline">
+            
+            <div class="timeline-item current">
+                <span class="timeline-date">February 2026 - Present</span>
+                <h4 class="timeline-title">IA Agent QA Architect</h4>
+                <p class="timeline-company">Advanced AI QA Systems</p>
+                <p>Spearheaded the transformation of traditional testing by designing a hybrid framework in Python to validate open-ended chat interactions. Architected a network of specialized autonomous agents for Requirements Engineering, Multi-Platform Execution (Selenium, Appium), and Governance (Jira Sync), boosting overall efficiency by 70%.</p>
+            </div>
+
+            <div class="timeline-item">
+                <span class="timeline-date">April 2024 - February 2026</span>
+                <h4 class="timeline-title">QA Architect</h4>
+                <p class="timeline-company">NTT Data</p>
+                <p>Architected an AI-powered test automation framework leveraging LLMs. Designed a custom JSON-based persistence layer to cache steps and drastically optimize token consumption, enhancing failure recovery and empowering seamless scenario re-testing.</p>
+            </div>
+
+            <div class="timeline-item">
+                <span class="timeline-date">November 2021 – April 2024</span>
+                <h4 class="timeline-title">QA Automation Lead & QA DevOps Specialist</h4>
+                <p class="timeline-company">Coppel</p>
+                <p>Led software quality activities for high-availability enterprise applications and <strong>Salesforce platform integrations</strong>. Mentored junior resources, designed overall QA strategies using Postman and Gherkin integrated into CI/CD, and established KPI frameworks that reduced regression cycles by 35%.</p>
+            </div>
+
+            <div class="timeline-item">
+                <span class="timeline-date">February 2020 - October 2021</span>
+                <h4 class="timeline-title">iOS Developer</h4>
+                <p class="timeline-company">Coppel</p>
+                <p>Developed the retail application for iOS, enforcing strict quality standards through TDD, MVP architecture, and Agile/SCRUM methodologies.</p>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+</html>
