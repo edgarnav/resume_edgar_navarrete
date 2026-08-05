@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edgar Ivan Navarrete Salcedo - Interactive CV</title>
+    <title>Edgar Ivan Navarrete Salcedo - Interactive Resume</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
         :root {
@@ -120,6 +120,104 @@
             margin: 10px 0 0 0;
             color: var(--text-light);
             font-weight: 500;
+        }
+
+        /* AI Agents Pipeline */
+        .pipeline-intro {
+            color: var(--text-light);
+            margin-bottom: 25px;
+            font-size: 1.05em;
+        }
+
+        .agent-pipeline {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin: 30px 0 50px 0;
+        }
+
+        @media (min-width: 768px) {
+            .agent-pipeline {
+                flex-direction: row;
+                justify-content: space-between;
+                align-items: stretch;
+                gap: 0;
+            }
+        }
+
+        .agent-node {
+            flex: 1;
+            background: white;
+            border: 2px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 25px 20px;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+        }
+
+        .agent-node:hover {
+            border-color: var(--secondary);
+            box-shadow: 0 10px 20px rgba(59, 130, 246, 0.1);
+            transform: translateY(-5px);
+        }
+
+        .agent-icon {
+            width: 70px;
+            height: 70px;
+            background: #eff6ff;
+            color: var(--secondary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8em;
+            margin: 0 auto 15px auto;
+        }
+
+        .agent-node:nth-child(4n+1) .agent-icon { background: #eef2ff; color: #6366f1; }
+        .agent-node:nth-child(4n+3) .agent-icon { background: #f0fdf4; color: var(--accent); }
+        .agent-node:nth-child(4n+5) .agent-icon { background: #fffbeb; color: #f59e0b; }
+        .agent-node:nth-child(4n+7) .agent-icon { background: #fef2f2; color: #ef4444; }
+
+        .agent-node h4 {
+            color: var(--primary);
+            margin: 0 0 12px 0;
+            font-size: 1.15em;
+        }
+
+        .agent-node p {
+            font-size: 0.9em;
+            margin: 0;
+            color: var(--text-light);
+            line-height: 1.5;
+        }
+
+        .agent-connector {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #cbd5e1;
+            font-size: 1.5em;
+            padding: 10px 0;
+        }
+
+        @media (min-width: 768px) {
+            .agent-connector {
+                width: 40px;
+                padding: 0;
+            }
+            .agent-connector i {
+                transform: rotate(0deg);
+            }
+        }
+
+        @media (max-width: 767px) {
+            .agent-connector i {
+                transform: rotate(90deg);
+            }
         }
 
         /* Transformation Diagram */
@@ -310,6 +408,46 @@
                 <i class="fas fa-coins"></i>
                 <h4>Cost Optimized</h4>
                 <p>Via Token Caching & JSON Persistence</p>
+            </div>
+        </div>
+
+        <!-- AI Agents Pipeline Section -->
+        <h3 class="section-title"><i class="fas fa-robot"></i> Multi-Agent Autonomous Testing Architecture</h3>
+        <p class="pipeline-intro">End-to-end workflow powered by artificial intelligence agents that transform the testing lifecycle: from requirements engineering to incident tracking in Jira.</p>
+        
+        <div class="agent-pipeline">
+            <!-- Agent 1 -->
+            <div class="agent-node">
+                <div class="agent-icon"><i class="fas fa-tasks"></i></div>
+                <h4>1. Requirements & Coverage Agent</h4>
+                <p>Analyzes user stories, identifies ambiguities in requirements, and dynamically calculates the optimal test coverage needed.</p>
+            </div>
+            
+            <div class="agent-connector"><i class="fas fa-chevron-right"></i></div>
+            
+            <!-- Agent 2 -->
+            <div class="agent-node">
+                <div class="agent-icon"><i class="fas fa-magic"></i></div>
+                <h4>2. Test Generation Agent</h4>
+                <p>Leverages LLMs and prompt engineering to automatically design and generate structured test cases, covering ideal flows and edge cases.</p>
+            </div>
+            
+            <div class="agent-connector"><i class="fas fa-chevron-right"></i></div>
+            
+            <!-- Agent 3 -->
+            <div class="agent-node">
+                <div class="agent-icon"><i class="fas fa-play"></i></div>
+                <h4>3. Multi-Platform Execution Agent</h4>
+                <p>Orchestrates automation and executes generated tests across different platforms using tools such as Selenium, Appium, and WinAppDriver.</p>
+            </div>
+            
+            <div class="agent-connector"><i class="fas fa-chevron-right"></i></div>
+            
+            <!-- Agent 4 -->
+            <div class="agent-node">
+                <div class="agent-icon"><i class="fab fa-jira"></i></div>
+                <h4>4. Governance & Reporting Agent</h4>
+                <p>Synchronizes the defect lifecycle. Automatically logs bugs in Jira, uploads metrics, and generates analytical reports for decision making.</p>
             </div>
         </div>
 
